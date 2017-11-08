@@ -35,6 +35,11 @@ function accountFollowed (followedData) {
     followedMessage(follower_userName);
 }
 
+
+
+
+
+
 //Creates stream for tweet recieved
 stream.on('tweet', receivedTweet);
 
@@ -57,11 +62,13 @@ function receivedTweet(receivedData){
         
         var messageObject = { };
         messageObject.tweetReceiver = replyto;
-        messageObject.original_message = messageReceived.toLowerCase();
+       
         messageObject.messageAltered  = messageObject.original_message.replace(("@" + replyto+ " "), "").toString();
+        messageObject.original_message = messageReceived.toLowerCase();
         console.log("Message object.messageAltered: " + messageObject.messageAltered);
         messageObject.senderUsername = receivedData.user.screen_name;
         messageObject.senderHandle = "@" + receivedData.user.screen_name;
+        console.log("User who sent message: " + messageObject.senderHandle);
 
         // Checks message for keywords
         msgHandling.keywordSearchRO(messageObject);
