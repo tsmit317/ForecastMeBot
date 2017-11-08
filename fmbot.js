@@ -141,7 +141,7 @@ function test(messageToTest){
 
 
 function followedMessage(follower_name){
-
+        var follower_userName = follower_name;
         var randomNum = Math.floor((Math.random() * 100) + 1);
         if(randomNum % 2 == 0)
         {
