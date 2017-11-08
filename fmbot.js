@@ -67,7 +67,13 @@ function receivedTweet(receivedData){
         msgHandling.keywordSearchRO(messageObject);
         //
         msgHandling.checkMessageObject(messageObject);
-        msgHandling.getWeather_sentTweet(messageObject);
+        var stringToTweet
+        wunderFunctions.retreiveWeather(messageObject, function waitForInfo(wfi){
+                stringToTweet = wfi;
+                sendTweet(stringToTweet);
+                
+                
+        });
 
         // Console.log the message object
         msgHandling.printMessageObject(messageObject);
