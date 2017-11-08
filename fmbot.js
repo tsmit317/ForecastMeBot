@@ -76,7 +76,7 @@ function receivedTweet(receivedData){
         msgHandling.checkMessageObject(messageObject);
         var stringToTweet
         wunderFunctions.retreiveWeather(messageObject, function waitForInfo(wfi){
-                stringToTweet = wfi;
+                stringToTweet = messageObject.senderHandle + " " + wfi;
                 sendTweet(stringToTweet);
                 
                 
