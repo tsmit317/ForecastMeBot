@@ -62,7 +62,7 @@ function receivedTweet(receivedData){
         
         var messageObject = { };
         messageObject.tweetReceiver = replyto;
-       
+        messageObject.original_message = messageReceived;
         messageObject.messageAltered  = messageObject.original_message.replace(("@" + replyto+ " "), "").toString();
         messageObject.original_message = messageReceived.toLowerCase();
         console.log("Message object.messageAltered: " + messageObject.messageAltered);
