@@ -314,7 +314,7 @@ module.exports = {
                 console.log("Checking length " + checkLen + "--" + checkLen.length);
                 var weatherMessageP1 = period1 + "-" + p1weather;
                 var weatherMessageP2 = period2 + "-" + p2weather;
-                var weatherMessage = forecastReturned;
+                var weatherMessage = checkLen;
                 // console.log("In if - weatherMessageP1: " + weatherMessageP1);
                 // console.log("In if - weatherMessageP2: " + weatherMessageP2);
                 // // Check string lengths
