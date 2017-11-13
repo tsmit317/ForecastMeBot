@@ -120,6 +120,7 @@ module.exports ={
                 //Checks to make sure the array length is 1 and the string is 5 characters
                 if((messageObject.messageAltered.length === 1) && (messageObject.messageAltered[0].length === 5))
                 {
+                    
                     //Sets the message object zipcode
                     messageObject.zipcode = messageObject.messageAltered[0];
                     console.log("Zip code found: " + messageObject.zipcode);
