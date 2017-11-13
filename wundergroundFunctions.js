@@ -314,44 +314,44 @@ module.exports = {
                 console.log("Checking length " + checkLen + "--" + checkLen.length);
                 var weatherMessageP1 = period1 + "-" + p1weather;
                 var weatherMessageP2 = period2 + "-" + p2weather;
-
+                var weatherMessage = forecastReturned;
                 // console.log("In if - weatherMessageP1: " + weatherMessageP1);
                 // console.log("In if - weatherMessageP2: " + weatherMessageP2);
-                // Check string lengths
-                if(checkLen.length < 140)
-                {
-                    console.log("Checking length " + checkLen + "--" + checkLen.length);
-                    checkLen += " " + weatherMessageP2;
+                // // Check string lengths
+                // if(checkLen.length < 140)
+                // {
+                //     console.log("Checking length " + checkLen + "--" + checkLen.length);
+                //     checkLen += " " + weatherMessageP2;
         
-                    // If the length of both period strings combined is > 140 characters, remove the second string
-                    if(checkLen.length > 140)
-                    {
-                        console.log("Checking length 2 " + checkLen + "--" + checkLen.length);
-                        checkLen = weatherMessageP1;
-                    }
-                }
-                else{
+                //     // If the length of both period strings combined is > 140 characters, remove the second string
+                //     if(checkLen.length > 140)
+                //     {
+                //         console.log("Checking length 2 " + checkLen + "--" + checkLen.length);
+                //         checkLen = weatherMessageP1;
+                //     }
+                // }
+                // else{
 
-                    while(checkLen.length > 160){
+                //     while(checkLen.length > 160){
 
-                        var list = [];
-                        var periodCharacter = '.';
-                        for(var i = 0; i < checkLen.length; i++){
-                            if(checkLen.charAt(i) == periodCharacter){
-                                list.push(i);
-                            }
-                        }
-                        console.log("List: " + list);
-                        console.log(list.length);
+                //         var list = [];
+                //         var periodCharacter = '.';
+                //         for(var i = 0; i < checkLen.length; i++){
+                //             if(checkLen.charAt(i) == periodCharacter){
+                //                 list.push(i);
+                //             }
+                //         }
+                //         console.log("List: " + list);
+                //         console.log(list.length);
                     
-                         var lastP = list[list.length-1];
-                         var firstIndex = list[list.length-2];
+                //          var lastP = list[list.length-1];
+                //          var firstIndex = list[list.length-2];
 
-                        var lastIndex = checkLen.length - 1;
-                        checkLen = checkLen.replace(checkLen.substring(firstIndex , lastP), "");
-                        console.log("Replaced String: " + checkLen);
-                    }
-                }
+                //         var lastIndex = checkLen.length - 1;
+                //         checkLen = checkLen.replace(checkLen.substring(firstIndex , lastP), "");
+                //         console.log("Replaced String: " + checkLen);
+                //     }
+                // }
                 
                 sendWeatherInfo(weatherMessage);
             }

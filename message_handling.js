@@ -7,28 +7,37 @@ module.exports ={
      * @description Searchs the message for keywords and applies a value to the messageObject
      */
      keywordSearchRO: function(messageObject){
-         // Calls list of error messages
+        // Calls list of error messages
         var errorMessages = require('./error_Messages');
-
+        //splits at whitespace
         message_R = messageObject.original_message.split(/[ ,]+/g);
     
 
         if(module.exports.checkForBadWords(message_R)){
             messageObject.keywordFound = 1;
-            messageObject.errorMsg = errorMessages.curseWordDetected;
+            
+            //There are multiple responses that can be used when a bad word is found. This randomly chooses one.
+            var randomNum = Math.floor((Math.random() * 100) + 1);
+            if(randomNum % 2 == 0){
+                messageObject.errorMsg = errorMessages.curseWordDetected02;
+            }
+            else{
+                messageObject.errorMsg = errorMessages.curseWordDetected;
+            }
+
             console.log("found badword: " + messageObject.errorMsg);
         }
         else if(message_R.indexOf("help") > -1){
             messageObject.keywordFound = 2;
             messageObject.errorMsg = errorMessages.helpMessage;
-                console.log("found help: " + messageObject.errorMsg);
+            console.log("found help: " + messageObject.errorMsg);
 
         }
         // Uses if statement to determine if array contains "pod, bay, (door/doors)"
         else if((message_R.indexOf("pod")> -1) && (message_R.indexOf("bay")> -1) && ((message_R.indexOf("door")> -1) || (message_R.indexOf("doors")> -1))  ){
             messageObject.keywordFound = 6;
             messageObject.errorMsg = "I\'m sorry " + messageObject.senderHandle + ". " +  errorMessages.spaceOdysseyResponse;
-                console.log("Space Odyssey Response: " + messageObject.errorMsg);
+            console.log("Space Odyssey Response: " + messageObject.errorMsg);
         }
         else if((message_R.indexOf("conditions") > -1) || (message_R.indexOf("condition") > -1)){
             messageObject.keywordFound = 3;
@@ -44,6 +53,8 @@ module.exports ={
                 messageObject.messageAltered = messageObject.messageAltered.replace(message_R[index2], "");
             }
         }
+
+        //Checks if forecast is in string. Accounts for common misspellings. Then removes from string.
         else if((message_R.indexOf("forecasts") > -1) || (message_R.indexOf("forecast") > -1) || (message_R.indexOf("forcast") > -1) || (message_R.indexOf("forcasts") > -1)){
             messageObject.keywordFound = 4;
 
@@ -90,7 +101,9 @@ module.exports ={
         // Calls list of error messages
         var errorMessages = require('./error_Messages');
         console.log("\nIn checkMessageObject");
-        console.log(messageObject.keywordFound);
+        console.log("MessageObject.keywordFound: " + messageObject.keywordFound);
+
+        // If keywords: 'Conditions, forecast, or none' are found.
         if(messageObject.keywordFound === 3 || messageObject.keywordFound === 4 || messageObject.keywordFound === 5)
         {
             console.log("IN IF 1");
