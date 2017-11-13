@@ -310,7 +310,7 @@ module.exports = {
                 var percentChance2 = forecastReturned[1].pop;
 
                 // Retrieve peroid strings. var checkLen is used to check the character limit
-                var checkLen = senderHandle + " " + period1 + "-" + p1weather;
+                var checkLen = period1 + "-" + p1weather;
                 console.log("Checking length " + checkLen + "--" + checkLen.length);
                 var weatherMessageP1 = period1 + "-" + p1weather;
                 var weatherMessageP2 = period2 + "-" + p2weather;
