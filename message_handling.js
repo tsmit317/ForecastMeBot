@@ -112,17 +112,16 @@ module.exports ={
             if(!(messageObject.messageAltered.indexOf(",") > -1))
             {
                 console.log("No comma found");
-                messageObject.messageAltered = messageObject.messageAltered.split(/[ ,]+/g);
+                messageObject.messageAltered.replace(/\s+/, "");
                 console.log("messasgeAltered regex: " + messageObject.messageAltered);
                 console.log("messageObject.messageAltered.length: "+ messageObject.messageAltered.length + " messageObject.messageAltered[0].length: " + messageObject.messageAltered[0].length );
                 console.log("messageObject.messageAltered[0]: " + messageObject.messageAltered[0]);
                 console.log("messageObject.messageAltered[1]: " + messageObject.messageAltered[1]);
                 //Checks to make sure the array length is 1 and the string is 5 characters
-                if(messageObject.messageAltered[1].length === 5)
+                if((messageObject.messageAltered.length === 1) && (messageObject.messageAltered[0].length === 5))
                 {
-
                     //Sets the message object zipcode
-                    messageObject.zipcode = messageObject.messageAltered[1];
+                    messageObject.zipcode = messageObject.messageAltered[0];
                     console.log("Zip code found: " + messageObject.zipcode);
                 }
                 else
