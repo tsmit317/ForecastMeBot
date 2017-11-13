@@ -79,7 +79,7 @@ module.exports ={
             {
                 messageObject.messageAltered = messageObject.messageAltered.replace(message_R[index04], "");
             }
-            
+            console.log("messasgeAltered after forecast: " + messageObject.messageAltered);
         } 
         else{
             messageObject.keywordFound = 5;
@@ -113,6 +113,7 @@ module.exports ={
             {
                 console.log("No comma found");
                 messageObject.messageAltered = messageObject.messageAltered.split(/[ ,]+/g);
+                console.log("messasgeAltered regex: " + messageObject.messageAltered);
                 console.log("messageObject.messageAltered.length: "+ messageObject.messageAltered.length + " messageObject.messageAltered[0].length: " + messageObject.messageAltered[0].length );
                 //Checks to make sure the array length is 1 and the string is 5 characters
                 if((messageObject.messageAltered.length === 1) && (messageObject.messageAltered[0].length === 5))
