@@ -55,7 +55,7 @@ function receivedTweet(receivedData){
 
     var replyto = receivedData.in_reply_to_screen_name;
     var messageReceived = receivedData.text;
-    
+    console.log(messageReceived);
     //Checks to see if the in_reply_to_screen_name matches the bots name
     if(replyto === 'ForecastMe'){
         console.log(messageReceived);
