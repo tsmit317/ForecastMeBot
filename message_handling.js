@@ -122,7 +122,7 @@ module.exports ={
                 {
 
                     //Sets the message object zipcode
-                    messageObject.zipcode = messageObject.messageAltered[0];
+                    messageObject.zipcode = messageObject.messageAltered;
                     console.log("Zip code found: " + messageObject.zipcode);
                 }
                 else
