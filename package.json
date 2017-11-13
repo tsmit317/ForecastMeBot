@@ -4,7 +4,7 @@
   "description": "ForecastMe bot sends weather forecast tweets",
   "main": "fmbot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node fm_bot.js"
   },
   "author": "TS",
   "license": "ISC",

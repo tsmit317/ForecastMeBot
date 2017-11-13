@@ -53,12 +53,13 @@ stream.on('tweet', receivedTweet);
  */
 function receivedTweet(receivedData){
 
+    console.log("in received tweet");
     var replyto = receivedData.in_reply_to_screen_name;
     var messageReceived = receivedData.text;
     console.log("message received: " + messageReceived);
     //Checks to see if the in_reply_to_screen_name matches the bots name
     if(replyto === 'ForecastMe'){
-        console.log(messageReceived);
+        console.log("in received tweet if: "+messageReceived);
         
         var messageObject = { };
         messageObject.tweetReceiver = replyto;
@@ -118,39 +119,6 @@ function test(messageToTest){
                 counter++;
         });
 }
-
-//test(tstm);
-// var tstm08_Help = "help";
-//  var tstsm02_condition = "pod bay doors raleigh, north carolina";
-// console.log("\n\n\n********************TEST02 CONDITION********************");
-// test(tstsm02_condition);
-
-// console.log("\n\n\n********************TEST03 ADDED 'CON'********************");
-// test(tstsm03_Misp);
-
-// console.log("\n\n\n********************TEST04 CONDITION ZIP********************");
-// test(tstsm04_conditionZip);
-
-// console.log("\n\n\n********************TEST05 FORECAST********************");
-// test(tstsm05_forecast);
-
-// console.log("\n\n\n********************TEST06 FORECASTS********************");
-// test(tstsm06_forecasts);
-
-// console.log("\n\n\n********************TEST07 EXTRASPACE********************");
-// test(tstsm07_ExtraSpace);
-
-// console.log("\n\n\n********************TEST08 HELP********************");
-// test(tstm08_Help);
-
-// console.log("\n\n\n********************TEST09 CURSE********************");
-// test(tstsm02_condition);
-
-// console.log("\n\n\n********************TEST10 HELP WITH WRONG CITY ('S')********************");
-// test(tstm10_HelpWithS);
-
-// console.log("\n\n\n********************TEST11 STATE ERROR ('NO CAROLINA')********************");
-// test(tstsm11_StateError);
 
 
 function followedMessage(follower_name){
