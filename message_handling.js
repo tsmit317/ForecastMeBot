@@ -106,14 +106,14 @@ module.exports ={
         // If keywords: 'Conditions, forecast, or none' are found.
         if(messageObject.keywordFound === 3 || messageObject.keywordFound === 4 || messageObject.keywordFound === 5)
         {
-            console.log("IN IF 1");
+            
         
             //Check for a comma (Figuring out if the string has a zipcode)
             if(!(messageObject.messageAltered.indexOf(",") > -1))
             {
                 console.log("No comma found");
                 messageObject.messageAltered = messageObject.messageAltered.split(/[ ,]+/g);
-
+                console.log("messageObject.messageAltered.length: "+ messageObject.messageAltered.length + " messageObject.messageAltered[0].length: " + messageObject.messageAltered[0].length );
                 //Checks to make sure the array length is 1 and the string is 5 characters
                 if((messageObject.messageAltered.length === 1) && (messageObject.messageAltered[0].length === 5))
                 {
