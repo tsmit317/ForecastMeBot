@@ -121,7 +121,7 @@ module.exports ={
                 if((messageObject.messageAltered.length === 1) && (messageObject.messageAltered[1].length === 5))
                 {
                     //Sets the message object zipcode
-                    messageObject.zipcode = messageObject.messageAltered[0];
+                    messageObject.zipcode = messageObject.messageAltered[1];
                     console.log("Zip code found: " + messageObject.zipcode);
                 }
                 else
