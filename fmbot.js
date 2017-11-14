@@ -77,8 +77,13 @@ function receivedTweet(receivedData){
         msgHandling.checkMessageObject(messageObject);
         var stringToTweet
         wunderFunctions.retreiveWeather(messageObject, function waitForInfo(wfi){
-                stringToTweet = messageObject.senderHandle + " " + wfi;
-                sendTweet(stringToTweet);
+                if(messageObject.keywordFound == 6){
+                        sendTweet(wfi);
+                }
+                else{
+                        stringToTweet = messageObject.senderHandle + " " + wfi;
+                        sendTweet(stringToTweet);
+                }
                 
                 
         });
@@ -116,7 +121,7 @@ function test(messageToTest){
                 stringToTwt = wfi;
                 msgHandling.printMessageObject(messageObject);
                 console.log("TWEET TO SEND: " + stringToTwt);
-                counter++;
+                
         });
 }
 
