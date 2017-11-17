@@ -106,8 +106,6 @@ module.exports ={
         // If keywords: 'Conditions, forecast, or none' are found.
         if(messageObject.keywordFound === 3 || messageObject.keywordFound === 4 || messageObject.keywordFound === 5)
         {
-            
-        
             //Check for a comma (Figuring out if the string has a zipcode)
             if(!(messageObject.messageAltered.indexOf(",") > -1))
             {
@@ -120,7 +118,6 @@ module.exports ={
                 // //Checks to make sure the array length is 1 and the string is 5 characters
                 if(messageObject.messageAltered.length === 5)
                 {
-
                     //Sets the message object zipcode
                     messageObject.zipcode = messageObject.messageAltered;
                     console.log("Zip code found: " + messageObject.zipcode);
@@ -177,10 +174,6 @@ module.exports ={
         {
             console.log("Length 1+, comparing state array");
             var holder = module.exports.compareStateArray(messageObject);
-
-            //compareStateArray returns an object with boolean and index if true
-            //console.log("holder.indexHolder: " + holder.indexHolder);
-            //console.log("holder.checkTF: " + holder.checkTF);
 
             if(holder.checkTF)
             {

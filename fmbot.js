@@ -24,7 +24,6 @@ stream.on('follow', accountFollowed);
 /**
  * 
  * @param {JSON} followedData - JSON data for the followed event.
- * 
  * @description detects if a Twitter user follows your account, then replys with a message.
  * At the moment, randomly generates a number 0-100 to determine which message to reply with.
  */
@@ -53,13 +52,11 @@ stream.on('tweet', receivedTweet);
  */
 function receivedTweet(receivedData){
 
-    console.log("in received tweet");
     var replyto = receivedData.in_reply_to_screen_name;
     var messageReceived = receivedData.text;
-    console.log("message received: " + messageReceived);
+    console.log("Message received: " + messageReceived);
     //Checks to see if the in_reply_to_screen_name matches the bots name
     if(replyto === 'ForecastMe'){
-        console.log("in received tweet if: "+messageReceived);
         
         var messageObject = { };
         messageObject.tweetReceiver = replyto;
@@ -73,9 +70,8 @@ function receivedTweet(receivedData){
 
         // Checks message for keywords
         msgHandling.keywordSearchRO(messageObject);
-        //
         msgHandling.checkMessageObject(messageObject);
-        var stringToTweet
+        var stringToTweet; //Used to add the sender handle if the error message is not space odessey
         wunderFunctions.retreiveWeather(messageObject, function waitForInfo(wfi){
                 if(messageObject.keywordFound == 6){
                         sendTweet(wfi);
@@ -84,8 +80,6 @@ function receivedTweet(receivedData){
                         stringToTweet = messageObject.senderHandle + " " + wfi;
                         sendTweet(stringToTweet);
                 }
-                
-                
         });
 
         // Console.log the message object
@@ -94,9 +88,6 @@ function receivedTweet(receivedData){
 }
 
 
-
-
-var counter = 0;
 
 /**
  * 
@@ -125,7 +116,10 @@ function test(messageToTest){
         });
 }
 
-
+/**
+ * @param {string} follower_name - name of the twitter user who followed the twitter bot
+ * @description Generates a random number to determine the correct response when followed. Uses f_Responses.
+ */
 function followedMessage(follower_name){
         var follower_userName = follower_name;
         var randomNum = Math.floor((Math.random() * 100) + 1);
@@ -184,15 +178,3 @@ function sendTweet(content){
     };
 };
 
-
-// var params = { q: 'wolfpack', count: 2 };
-
-// T.get('search/tweets', params, getData); 
-
-// function getData(err, data, response) {
-//     var search_results = data.statuses;
-//     for(var i = 0; i < search_results.length; i++){
-//         console.log(search_results[i].text);
-//     }
-  
-// };
