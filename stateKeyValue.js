@@ -1,3 +1,6 @@
+/**
+ * stateKetValue.js: List of state names and abbreviations. Used in message_handling.js
+ */
 module.exports = {
     usStates: [
     { name: 'ALABAMA', abbreviation: 'AL'},

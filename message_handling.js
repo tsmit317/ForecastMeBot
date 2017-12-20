@@ -1,3 +1,6 @@
+/**
+ * message_handling.js: Contains functions used to handle incomming user messages (Input Sanitization).
+ */
 module.exports ={
 
     /**

@@ -1,3 +1,6 @@
+/**
+ * cursewords.js: This is just a list of curse words to be checked against. 
+ */
 module.exports = {
         cursewords: [ 'fuck', 
                     'shit', 

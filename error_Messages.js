@@ -1,3 +1,6 @@
+/**
+ * error_Messages.js: Contains list of strings to be used as error messages. 
+ */
 module.exports = { 
     
         stateErrorMessage: "Uh-oh, the state you entered broke me! Please use the correct zip code or state abbreviation. Tweet me help for directions",

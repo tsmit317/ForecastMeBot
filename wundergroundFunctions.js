@@ -1,3 +1,6 @@
+/**
+ * wundergroundFunctions.js: Contains functions for using the wunderground API.
+ */
 module.exports = {
 
     /***********************************************************************************************************
@@ -270,6 +273,7 @@ module.exports = {
         //Initialize Wunderground
         var wk = require('./wundergroundkey');
         var wunderground = require('wunderground')(wk.wunderground_key);
+
         wunderground.forecast( query, function(err, result)
         {
             console.log("\n\nIn getForecast");
@@ -285,9 +289,9 @@ module.exports = {
                 var p1weather = forecastReturned[0].fcttext;
                 var percentChance1 = forecastReturned[0].pop;
 
-                console.log("In if - period1: " + period1);
-                console.log("In if - p1weather: " + p1weather);
-                console.log("In if - percentChance1: " + percentChance1);
+                console.log("period1: " + period1);
+                console.log("p1weather: " + p1weather);
+                console.log("percentChance1: " + percentChance1);
 
                 // Retrieve second period(Ex: Saturday Night) information 
                 var period2 = forecastReturned[1].title;

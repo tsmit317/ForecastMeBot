@@ -1,3 +1,7 @@
+/**
+ * fmbot.js: Essentailly the driver for the app. 
+ *      
+ */
 
 var Twit = require('twit');
 
@@ -148,7 +152,7 @@ function followedMessage(follower_name){
 
 }
 
-
+  
 /**
  * @param {string} content - String to be tweeted
  * @description Sends a tweet 
@@ -173,3 +177,4 @@ function sendTweet(content){
     };
 };
 
+original 
