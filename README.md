@@ -58,19 +58,19 @@ Otherwise, the bot sends a request to wunderground and returns a string to be tw
 ![Screenshot](https://user-images.githubusercontent.com/13583303/30406823-4db90d3e-98c2-11e7-9464-40770aa6fa99.png)
 
 * An example of a reply from @ForecastMe 
-![Screenshot](https://user-images.githubusercontent.com/13583303/30406545-6b2df5ac-98c0-11e7-9039-52d0ab09bfc2.png)
+![Screenshot](https://user-images.githubusercontent.com/13583303/34232136-fad47c74-e5ac-11e7-95df-64ea9e7ff5b2.png)
 
 * An example of ForecastMe help message. When tweeted 'Help', the bot responds with instructions on how to use.
-![Screenshot](https://user-images.githubusercontent.com/13583303/30406582-ae36d616-98c0-11e7-8a37-5640eeff00a7.png)
+![Screenshot](https://user-images.githubusercontent.com/13583303/34232149-05e68fee-e5ad-11e7-8898-5acfc6000538.png)
 
 * An example of an incorrect query where there is either a typo or the the city does not exist.
-![Screenshot](https://user-images.githubusercontent.com/13583303/30406583-af87bf76-98c0-11e7-9b9d-641b9dbed1df.png)
+![Screenshot](https://user-images.githubusercontent.com/13583303/34232150-05f744e2-e5ad-11e7-9e19-be6b34db62b7.png)
 
 * Returns error message if the state is misspelled or if the location is not within the US.
-![Screenshot](https://user-images.githubusercontent.com/13583303/30406584-b0ff7f60-98c0-11e7-9ee0-061ebc948997.png)
+![Screenshot](https://user-images.githubusercontent.com/13583303/34232151-0606c9e4-e5ad-11e7-8c24-693512d7cf95.png)
 
 * An example of a query for the forecast.
-![Screenshot](https://user-images.githubusercontent.com/13583303/30406586-b2837486-98c0-11e7-9bb0-82594b63528f.png)
+![Screenshot](https://user-images.githubusercontent.com/13583303/34232153-062c2ad6-e5ad-11e7-8a8d-ae9985e07c57.png)
 
 * When a curse word is detected, ForecastMe responds with a message.
-![Screenshot](https://user-images.githubusercontent.com/13583303/30406789-03444552-98c2-11e7-8c84-9785a2c496a1.png)
+![Screenshot](https://user-images.githubusercontent.com/13583303/34232155-0658f926-e5ad-11e7-8c2a-25d2c7118d89.png)
