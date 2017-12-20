@@ -1,6 +1,7 @@
 /**
  * wundergroundFunctions.js: Contains functions for using the wunderground API.
  */
+
 module.exports = {
 
     /***********************************************************************************************************

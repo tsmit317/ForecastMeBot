@@ -1,7 +1,7 @@
 /**
  * appkeys.js: .js file conataining the application keys.
- * 
  */
+
 module.exports = {
      consumer_key:         'uIyqubFTOjW6h92ZID9XffZyv',
      consumer_secret:      'u0gxfbQO3TSuMHcvkQt8E9MM5NuT0yJKs7PYYBQ6QbYYjBBrul',

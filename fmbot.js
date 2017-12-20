@@ -1,6 +1,5 @@
 /**
- * fmbot.js: Essentailly the driver for the app. 
- *      
+ * fmbot.js: Essentailly the driver for the app.   
  */
 
 var Twit = require('twit');

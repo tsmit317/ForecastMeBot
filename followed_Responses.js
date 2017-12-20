@@ -1,6 +1,7 @@
 /**
  * followed_Responses.js: Contains list of strings to be used when the bot is followed by a user.
  */
+
 module.exports = { 
     
         followedMessage01: "Did we just become BFF\'s!?",
