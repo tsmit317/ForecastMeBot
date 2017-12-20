@@ -8,5 +8,4 @@ module.exports = {
         cityErrorMessage: "Doh! There was an error with the city you entered",
         spaceOdysseyResponse: "I\'m afraid I can\'t do that."
 
-    
 }

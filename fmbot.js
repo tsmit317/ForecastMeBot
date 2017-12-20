@@ -15,14 +15,12 @@ var wunderFunctions = require('./wundergroundFunctions');
 var f_Responses = require('./followed_Responses');
 
 
-
 // Creating a user stream
 var stream = T.stream('user');
 // Creates a stream to detect when users follow you
 stream.on('follow', accountFollowed);
 
 /**
- * 
  * @param {JSON} followedData - JSON data for the followed event.
  * @description detects if a Twitter user follows your account, then replys with a message.
  * At the moment, randomly generates a number 0-100 to determine which message to reply with.
@@ -35,12 +33,9 @@ function accountFollowed (followedData) {
 }
 
 
-
-
-
-
 //Creates stream for tweet recieved
 stream.on('tweet', receivedTweet);
+
 
 /**
  * @param {JSON} receivedData - JSON data for the followed event.
@@ -48,7 +43,6 @@ stream.on('tweet', receivedTweet);
  * Creates a message object to hold the JSON object data (Tweet information).
  * Sets to lowercase and removes '@ForecastMe' from the message.
  * Uses three functions: keywordSearchRO(), checkMessageObject(), getWeather_sentTweet() - to determine what wunderground search to be made.
- * 
  */
 function receivedTweet(receivedData){
 
@@ -73,6 +67,7 @@ function receivedTweet(receivedData){
         msgHandling.checkMessageObject(messageObject);
         var stringToTweet; //Used to add the sender handle if the error message is not space odessey
         wunderFunctions.retreiveWeather(messageObject, function waitForInfo(wfi){
+
                 if(messageObject.keywordFound == 6){
                         sendTweet(wfi);
                 }
@@ -86,7 +81,6 @@ function receivedTweet(receivedData){
         msgHandling.printMessageObject(messageObject);
     }
 }
-
 
 
 /**
@@ -115,6 +109,7 @@ function test(messageToTest){
                 
         });
 }
+
 
 /**
  * @param {string} follower_name - name of the twitter user who followed the twitter bot

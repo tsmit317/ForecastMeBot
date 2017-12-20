@@ -13,11 +13,13 @@ module.exports = {
     retreiveWeather: function(messageObject, waitForInfo){
         console.log("\n\nIn retreiveWeather");
        
+        //If the error message is empty, checks to see if 'conditons', 'forecast', or no keyword was found
         if (typeof messageObject.errorMsg === 'undefined' && (messageObject.keywordFound === 3 || messageObject.keywordFound === 4 || messageObject.keywordFound === 5))
         {
             switch(messageObject.keywordFound){
+                //Keyword 'conditions' was found
                 case 3:
-                        console.log("Case 3");
+                        console.log("Case 3 - Conditions");
                         if(typeof messageObject.zipcode === 'undefined')
                         {
                             console.log("Zipcode not found");
@@ -26,9 +28,6 @@ module.exports = {
                                             city: messageObject.city,
                                             state: messageObject.state
                                         }
-
-                            console.log("Query city: " + query.city);
-                            console.log("Query state: " + query.state);
 
                             module.exports.getConditions(query, function sendWeatherInfo(forecastReturned){
                                 console.log("\nForecastReturned string: " + forecastReturned);
@@ -43,8 +42,6 @@ module.exports = {
                                             zip: messageObject.zipcode
                                         }
 
-                            console.log("Query zip: " + query.zip);
-
                             module.exports.getConditions(query, function sendWeatherInfo(forecastReturned){
                                 console.log("\nForecastReturned string: " + forecastReturned);
                                 waitForInfo(forecastReturned);
@@ -52,8 +49,9 @@ module.exports = {
                         }
                         break;
 
+                //Keyword 'Forecast' was found        
                 case 4:
-                        console.log("Case 4");
+                        console.log("Case 4 - Forecast");
                         if(typeof messageObject.zipcode === 'undefined')
                         {
                             console.log("Zipcode not found");
@@ -61,9 +59,6 @@ module.exports = {
                                             city: messageObject.city,
                                             state: messageObject.state
                                         }
-
-                            console.log("Query city: " + query.city);
-                            console.log("Query state: " + query.state);
 
                             module.exports.getForecast(query, messageObject.senderHandle, function sendWeatherInfo(forecastReturned){
                                 console.log("\nForecastReturned string: " + forecastReturned);
@@ -87,8 +82,9 @@ module.exports = {
                         }
                         break;
 
+                //No keyword was found        
                 case 5:
-                        console.log("Case 5");
+                        console.log("Case 5 - No keyword");
                         if(typeof messageObject.zipcode === 'undefined')
                         {
                             console.log("Zipcode not found");
@@ -96,9 +92,6 @@ module.exports = {
                                             city: messageObject.city,
                                             state: messageObject.state
                                         }
-
-                            console.log("Query city: " + query.city);
-                            console.log("Query state: " + query.state);
 
                             module.exports.getWeather(query, function sendWeatherInfo(forecastReturned){
                                 console.log("\nForecastReturned string: " + forecastReturned);
@@ -112,8 +105,6 @@ module.exports = {
                             var query = {
                                             zip: messageObject.zipcode
                                         }
-
-                            console.log("Query zip: " + query.zip);
 
                             module.exports.getWeather(query, function sendWeatherInfo(forecastReturned){
                                 console.log("\nForecastReturned string: " + forecastReturned);
@@ -146,20 +137,15 @@ module.exports = {
 
     getConditions: function (query, sendWeatherInfo)
     {
-        //Wunderground initialize
+        //Initialize Wunderground 
         var wk = require('./wundergroundkey');
         var wunderground = require('wunderground')(wk.wunderground_key);
         wunderground.conditions(query, function(err, conditions)
         {
-            console.log("In getConditions b4 if - error: " + err);
-            if(typeof conditions.current_observation.temp_f !== 'undefined')
-            {
-                console.log("In getConditions b4 if - conditions: " + conditions.current_observation.temp_f);
-            }
-        
+            //Checks for request errors
             if(!err && !(conditions.current_observation == null))
             {
-                console.log("\n\nIn getConditions");
+                console.log("\n\nIn getConditions - No Errors");
                 var conditionsReturned = conditions.current_observation;
                 var currentTemperature = Math.round(conditionsReturned.temp_f);
 
@@ -171,7 +157,7 @@ module.exports = {
                 var windString = conditionsReturned.wind_string;
                 var windDirection = conditionsReturned.wind_dir;
                 var windDirAbrrv;
-                console.log("Wind Direction: " + conditionsReturned.wind_dir);
+                
                 var windSpeed = Math.round(conditionsReturned.wind_mph);
                 var windchill_f = conditionsReturned.windchill_f;
                 
@@ -265,7 +251,6 @@ module.exports = {
     },
 
 
-
     /***********************************************************************************************************
      * 
      * @param {object} query - object contains either the zipcode or city and state
@@ -282,7 +267,7 @@ module.exports = {
 
     getForecast: function (query,senderHandle, sendWeatherInfo)
     {
-        //Wunderground initialize
+        //Initialize Wunderground
         var wk = require('./wundergroundkey');
         var wunderground = require('wunderground')(wk.wunderground_key);
         wunderground.forecast( query, function(err, result)
@@ -361,7 +346,7 @@ module.exports = {
 
     getWeather: function (query, sendWeatherInfo)
     { 
-        //Wunderground initialize
+        //Initialize Wunderground
         var wk = require('./wundergroundkey');
         var wunderground = require('wunderground')(wk.wunderground_key);
         var actions = ['forecast', 'forecast10day', 'conditions'];

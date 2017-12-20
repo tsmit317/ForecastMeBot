@@ -1,7 +1,5 @@
 module.exports ={
 
-
-
     /**
      * @param {object} messageObject - Object containing message recieved information.
      * @description Searchs the message for keywords and applies a value to the messageObject
@@ -25,12 +23,12 @@ module.exports ={
                 messageObject.errorMsg = errorMessages.curseWordDetected;
             }
 
-            console.log("found badword: " + messageObject.errorMsg);
+            console.log("Found badword in keywordSearchRO: " + messageObject.errorMsg);
         }
         else if(message_R.indexOf("help") > -1){
             messageObject.keywordFound = 2;
             messageObject.errorMsg = errorMessages.helpMessage;
-            console.log("found help: " + messageObject.errorMsg);
+            console.log("Found help in keywordSearchRO: " + messageObject.errorMsg);
 
         }
         // Uses if statement to determine if array contains "pod, bay, (door/doors)"
@@ -84,7 +82,7 @@ module.exports ={
         else{
             messageObject.keywordFound = 5;
         }
-        console.log("found keyword: " + messageObject.keywordFound);
+        console.log("Keyword found in keywordSearchRO: " + messageObject.keywordFound);
                 
     },
 
@@ -100,22 +98,22 @@ module.exports ={
     checkMessageObject: function(messageObject){
         // Calls list of error messages
         var errorMessages = require('./error_Messages');
-        console.log("\nIn checkMessageObject");
-        console.log("MessageObject.keywordFound: " + messageObject.keywordFound);
-
+        console.log("\nIn checkMessageObject" + "\nMessageObject.keywordFound: " + messageObject.keywordFound);
+        
         // If keywords: 'Conditions, forecast, or none' are found.
         if(messageObject.keywordFound === 3 || messageObject.keywordFound === 4 || messageObject.keywordFound === 5)
         {
-            //Check for a comma (Figuring out if the string has a zipcode)
+            //Check if string doesnt contain a comma. If not, there is a zipcode 
             if(!(messageObject.messageAltered.indexOf(",") > -1))
             {
                 console.log("No comma found");
-                 messageObject.messageAltered =  messageObject.messageAltered.replace(/\s+/, "");
+                messageObject.messageAltered =  messageObject.messageAltered.replace(/\s+/, "");
                 console.log("messasgeAltered regex: " + messageObject.messageAltered);
                 // console.log("messageObject.messageAltered.length: "+ messageObject.messageAltered.length + " messageObject.messageAltered[0].length: " + messageObject.messageAltered[0].length );
                 // console.log("messageObject.messageAltered[0]: " + messageObject.messageAltered[0]);
                 // console.log("messageObject.messageAltered[1]: " + messageObject.messageAltered[1]);
-                // //Checks to make sure the array length is 1 and the string is 5 characters
+                
+                //Checks to make sure the array length is 1 and the string is 5 characters
                 if(messageObject.messageAltered.length === 5)
                 {
                     //Sets the message object zipcode
@@ -151,7 +149,7 @@ module.exports ={
     checkStateString: function(messageObject){
         // Calls list of error messages
         var errorMessages = require('./error_Messages');
-        
+        // Calls array with state names and abbreviations
         var statesKV = require('./stateKeyValue');
         statesKV = statesKV.usStates;
 
@@ -229,7 +227,6 @@ module.exports ={
         var cSTa = { checkTF: false, indexHolder: undefined }
         var wordHolder = messageObject.splitAfterCommaArr[0];
 
-     
         for(var i = 0; i < messageObject.splitAfterCommaArr.length; i++)
         {
             if(i > 0)
@@ -290,7 +287,6 @@ module.exports ={
       * @description Compares the nameToCheck against an array of state names.
       * @return Boolean
       */
-
 
     //************************************************************************************************************************
     // NOTE: I just realized I have several state name checking functions. I will eventually come back and consolidate these.
@@ -381,13 +377,11 @@ module.exports ={
 
     /**
      * @param {object} messageArr - String or array to be combined
-     * 
      * @description Combines array into string, replacing whitespace with an underscore. Also accepts string
      * Used to replace whitespace with an underscore in order to produce the correct URL
      * (Ex: forecast/q/CA/San_Francisco.json)
      * Checks if param is an array. If so, combines into string.
      * Else just replaces whitespace.
-     * 
      * @returns string
      */
     combineWithUnderscore: function(messageArr){
@@ -402,7 +396,7 @@ module.exports ={
                     }
                     else
                     {
-                        combinedMessage += " " +messageArr[t];
+                        combinedMessage += " " + messageArr[t];
                     }    
                 }
             }
